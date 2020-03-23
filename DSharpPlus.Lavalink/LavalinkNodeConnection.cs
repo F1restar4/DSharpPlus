@@ -204,7 +204,7 @@ namespace DSharpPlus.Lavalink
         /// <returns>Channel connection, which allows for playback control.</returns>
         public async Task<LavalinkGuildConnection> ConnectAsync(DiscordChannel channel)
         {
-            if (this.ConnectedGuilds.ContainsKey(channel.Guild.Id))
+            if (this.ConnectedGuilds.ContainsKey(channel.Guild.Id) && this.ConnectedGuilds[channel.Guild.Id].IsConnected)
                 return this.ConnectedGuilds[channel.Guild.Id];
 
             if (channel.Guild == null || channel.Type != ChannelType.Voice)
